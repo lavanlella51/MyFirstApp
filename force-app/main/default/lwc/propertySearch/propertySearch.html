@@ -1,0 +1,106 @@
+<template>
+    <div class="main">
+        <div class="slds-grid slds-wrap">                                    
+            
+            <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-4 slds-large-size--1-of-4 slds-p-around_small">                
+                <lightning-card >
+                    <div class="slds-grid slds-wrap slds-p-around_x-small">                        
+                        <div class="slds-col slds-size--1-of-1 slds-p-around_small">
+                            <lightning-slider label="Min Budget" min="10" step="10"></lightning-slider>
+                        </div>
+                        <div class="slds-col slds-size--1-of-1 slds-p-around_small">
+                            <lightning-slider label="Max Budget" min="10" step="10"></lightning-slider>
+                        </div>                    
+                        <div class="slds-col slds-size--1-of-1 slds-p-around_small">
+                            <lightning-combobox name="Type" label="Property Type"
+                                placeholder="Select Property Type"
+                                options={propertyTypeOptions}>
+                            </lightning-combobox>
+                        </div>
+                        <div class="slds-col slds-size--1-of-1 slds-p-around_small">
+                            <lightning-combobox name="bhk" label="No of bedrooms"
+                                placeholder="Select No of bedrooms"
+                                options={bhkOptions}>
+                            </lightning-combobox>
+                        </div>
+                        <div class="slds-col slds-size--1-of-1 slds-p-around_small">
+                            <lightning-combobox name="Type" label="Construction Status"
+                                placeholder="Select Construction Status"
+                                options={constructionStatusOptions}>
+                            </lightning-combobox>
+                        </div>
+                        <div class="slds-col slds-size--1-of-1 slds-p-around_small">
+                            <lightning-input type="text" label="Purchase Type" variant="" placeholder="Purchase Type"></lightning-input>    
+                        </div>
+                        <div class="slds-size_12-of-12">
+                            <div class="slds-align_absolute-center">                    
+                                <lightning-button variant="brand" label="Apply" title="Apply Filters"                                 
+                                    class="slds-m-left_x-small" onclick={applyFilters}>
+                                </lightning-button>
+                            </div>
+                        </div>
+                    </div>
+                </lightning-card>
+            </div>
+            
+            <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--3-of-4 slds-large-size--3-of-4 slds-p-around_small propertyPanel">                
+                <template for:each={properties} for:item="p">
+                    <div class="slds-p-around_xx-small" key={p.Id}>
+                        <lightning-card >
+                            <h3 slot="title">
+                                {p.No_of_Bedrooms__c} Bedroom {p.Project_Type__c} in {p.Locality_Sector__c}
+                            </h3>
+                            <h3 slot="footer" style="text-align:left" class="slds-text-title_bold">
+                                <template if:true={p.Project_Type__c}>
+                                    <lightning-badge label={p.Project_Type__c} class="slds-m-bottom_xx-small"></lightning-badge>
+                                </template>
+                                <template if:true={p.Availability_Status__c}>
+                                    <lightning-badge label={p.Availability_Status__c} class="slds-m-bottom_xx-small"></lightning-badge>
+                                </template>
+                                <template if:true={p.Furnishing_Status__c}>
+                                    <lightning-badge label={p.Furnishing_Status__c} class="slds-m-bottom_xx-small"></lightning-badge>
+                                </template>
+                                <template if:true={p.Age_of_Property__c}>
+                                    <lightning-badge label={p.Age_of_Property__c} class="slds-m-bottom_xx-small"></lightning-badge>
+                                </template>
+                                <template if:true={p.Available_for__c}>
+                                    <lightning-badge label={p.Available_for__c} class="slds-m-bottom_xx-small"></lightning-badge>
+                                </template>                                                                
+                                <template if:true={p.Phase_1_RERA_No__c}>
+                                    <lightning-badge label="RERA" class="slds-m-bottom_xx-small"></lightning-badge>
+                                </template>
+                            </h3>
+                            <div class="slds-grid slds-p-around_x-small">
+                                <div class="slds-size_2-of-12"> 
+                                    <img src={p.Apartment_Society__r.Image_URL__c}>
+                                </div>
+                                <div class="slds-size_10-of-12"> 
+                                    <div class="slds-size_12-of-12 slds-p-left_x-small">
+                                        <h3 class="slds-p-around_x-small slds-text-title_bold">{p.Apartment_Society__r.Name}</h3>
+                                        <div class="slds-grid slds-wrap slds-p-around_x-small">
+                                            <h3 if:true={p.Min_Budget_Forumula__c} class="slds-size_4-of-12 slds-text-title_bold">                                                
+                                                <lightning-formatted-number value={p.Min_Budget_Forumula__c}></lightning-formatted-number> - <lightning-formatted-number value={p.Max_Budget_Forumula__c}></lightning-formatted-number>
+                                            </h3>
+                                            <h3 if:true={p.No_of_Bedrooms__c} class="slds-size_3-of-12 slds-text-title_bold">
+                                                {p.No_of_Bedrooms__c} bhk
+                                            </h3>                                            
+                                            <h3 if:true={p.Built_Up_Area__c} class="slds-size_3-of-12 slds-text-title_bold">
+                                                {p.Built_Up_Area__c} sq.ft. 
+                                            </h3>
+                                            <h3 if:true={p.Price_sqft__c} class="slds-size_2-of-12 slds-text-title_bold">
+                                                {p.Price_sqft__c}/sq.ft.
+                                            </h3>
+                                            <div class="slds-size_12-of-12 slds-p-top_x-small" title={p.Apartment_Society__r.Description__c}>
+                                                <span class="module line-clamp">{p.Apartment_Society__r.Description__c}</span>
+                                            </div>
+                                        </div>
+                                    </div>   
+                                </div>
+                            </div>
+                        </lightning-card>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

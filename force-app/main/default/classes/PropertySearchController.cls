@@ -1,5 +1,6 @@
 public without sharing class PropertySearchController {
     //Git commit demo
+    // Added new comment
     @AuraEnabled
     public static List<Property__c> getProperties(){
         return [SELECT Id, Name, Address__c, Age_of_Property__c, Apartment_Society__c, 

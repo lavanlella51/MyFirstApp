@@ -79,41 +79,14 @@ export default class PropertySearch extends LightningElement {
     
     /*
     
-    showPopover = false;
-    orderData = [];
-
-    connectedCallback(){
-        this.orderData = [
-            {"orderType":"Mixed", "OrderId":"123445", "orderStatus":"Cancelled", "externalOrderId":"99220469", "orderSubmittedDateTime":"2022-06-16T12:45:09-04:00"},
-            {"orderType":"Mixed", "OrderId":"4534543", "orderStatus":"Cancelled", "externalOrderId":"4345444", "orderSubmittedDateTime":"2022-06-19T12:45:09-04:00"}
-        ];
-    }
-
-    openPopover(event){
-        console.log('---class---'+event.target.className);        
-        const elements = this.template.querySelectorAll("."+event.target.className);
-        if (elements) {
-            elements.forEach(e => {
-                console.log('--------'+e.className);
-                console.log('--------'+e.classList);
-                if(e.classList.contains("hover-modal")){
-                    e.style.display = "inline";
-                }
-            });
-        }
-    }
-
-    closePopover(event){
-        const elements = this.template.querySelectorAll("."+event.target.className);
-        if (elements) {
-            elements.forEach(e => {
-                console.log('--------'+e.className);
-                console.log('--------'+e.classList);
-                if(e.classList.contains("hover-modal")){
-                    e.style.display = "none";
-                }
-            });
-        }
+    toggleSection(event){
+        if(event.target.iconName === 'utility:chevronright'){
+            event.target.iconName = 'utility:chevrondown';
+            this.template.querySelector('.toggleDiv').classList.add('slds-is-open');
+        }else{
+            event.target.iconName = 'utility:chevronright';
+            this.template.querySelector('.toggleDiv').classList.remove('slds-is-open');
+        }        
     }
     
     

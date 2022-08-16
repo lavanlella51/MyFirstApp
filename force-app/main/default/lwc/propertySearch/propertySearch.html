@@ -105,62 +105,49 @@
     </div>
     
     <!--
-    <template>
-    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_header-hidden" 
-                    aria-labelledby="element-with-table-label" >
-                    <thead>
-                        <tr class="slds-line-height_reset">
-                            <th class="" scope="col">
-                                <div class="slds-truncate" title="Order Date and Time">Order Date and Time</div>
-                            </th>
-                            <th class="" scope="col">
-                                <div class="slds-truncate" title="Order ID">Order ID</div>
-                            </th>
-                            <th class="" scope="col">
-                                <div class="slds-truncate" title="Order Status">Order Status</div>
-                            </th>                        
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <template for:each={orderData} for:item="o">
-                            <tr class="slds-hint-parent" key={o}>
-                                <td data-label="Order Date and Time">
-                                    <div class="slds-truncate" title={o.orderSubmittedDateTime}>
-                                        <lightning-formatted-date-time value={o.orderSubmittedDateTime} year="numeric" month="numeric" day="numeric" hour="2-digit"
-                                        minute="2-digit" time-zone="EST"  hour12="false"></lightning-formatted-date-time>
-                                    </div>
-                                </td>
-                                <td data-label="Order ID" class="has-details">
-                                    <div class="slds-truncate" title={o.OrderId}>{o.OrderId}</div>
-                                    <span class="details">
-                                        <section aria-describedby={o.OrderId} aria-labelledby="dialog-heading-id-234" class="slds-popover slds-nubbin_left-top" role="dialog">
-                                            <div class="slds-popover__body" id={o.OrderId}>
-                                                <div class="slds-media">
-                                                    <div class="slds-media__body">                    
-                                                        <div class="slds-size_12-of-12 slds-grid slds-wrap">
-                                                            <div class="slds-size_6-of-12 slds-p-around_medium" >
-                                                                Value 1
-                                                            </div>
-                                                            <div class="slds-size_6-of-12 slds-p-around_medium">
-                                                                Value 2
-                                                            </div>
-                                                            <div class="slds-size_6-of-12 slds-p-around_medium">
-                                                                Value 3
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </section>
-                                    </span>
-                                </td>
-                                <td data-label="Order Status">
-                                    <div class="slds-truncate" title={o.orderStatus}>{o.orderStatus}</div>
-                                </td>                                    
-                            </tr> 
-                        </template>           
-                    </tbody>
-                </table>
+
+<template>
+    <div class="slds-section toggleDiv slds-is-open" key={activityByMonth.calendarMonth}>
+        <h3 class="slds-section__title">
+        <button aria-controls={activityByMonth.calendarMonth} aria-expanded="false" 
+            class="slds-button slds-section__title-action" onclick={toggleSection}>
+            <lightning-icon icon-name="utility:chevrondown" 
+                size="x-small" title="toggle">
+            </lightning-icon>&nbsp;
+            <span class="slds-truncate sectionTitle" title="Section Title">{activityByMonth.calendarMonth}</span>
+        </button>
+        </h3>
+        <div aria-hidden="true" class="slds-section__content" id={activityByMonth.calendarMonth}>
+            <template if:true={activityAvailable}>
+                <div class="slds-grid slds-p-bottom_x-small slds-wrap">                                        
+                    <div class="slds-size_12-of-12 slds-float_right" style="text-align:right">
+                        <label style="color: #3e3e3c;font-size: .75rem;vertical-align: bottom;">
+                            Page {currentPage} of {numberOfPages}
+                        </label>
+                        <lightning-button-icon icon-name="utility:left"  variant="brand" alternative-text="Previous" 
+                            class="slds-m-left_xx-small previous" title="Previous" onclick={previousPage}>
+                        </lightning-button-icon>
+                        <lightning-button-icon icon-name="utility:right" variant="brand" alternative-text="Next" 
+                            class="slds-m-left_xx-small next" title="Next" onclick={nextPage}>
+                        </lightning-button-icon>                        
+                    </div>
+                </div>   
+                
+                <ul class="slds-timeline">
+                    <template for:each={pageList} for:item="activity">
+                        <c-activity-detail activity={activity} key={activity.Id}></c-activity-detail>
+                    </template>
+                </ul>  
+            </template>
+            <template if:false={activityAvailable}>
+                <label class="slds-align_absolute-center" 
+                    style="color: #3e3e3c;font-size: .75rem;">
+                    No activities to display.
+                </label>
+            </template>
+        </div>
+    </div>
+</template>
 
     -->
     

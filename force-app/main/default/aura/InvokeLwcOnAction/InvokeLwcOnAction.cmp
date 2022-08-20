@@ -1,0 +1,27 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:appHostable" access="global">
+    <aura:handler name="init" value="{! this}" action="{! c.doInit}" />
+    <aura:attribute name="showCompleteCancel" type="Boolean" default="false" />
+    <aura:attribute name="showCancelConfirmModal" type="Boolean" default="false" />
+    <aura:attribute name="options" type="List" default="[{'label': 'Yes', 'value': 'Yes'},{'label': 'No', 'value': 'No'}]"/>
+    <aura:attribute name="selectedValue" type="String" default="Yes"/>
+    <div style="background:white" class="slds-p-around_large">
+        <lightning:radioGroup name="radioGroup"
+                          label="Radio Group"
+                          options="{! v.options }"
+                          value="{! v.value }"
+                          type="radio"
+                          onchange="{! c.handleRadioChange }"/>
+        <lightning:button label="Previous" title="Previous"/>
+    
+            <aura:if isTrue="{! v.showCompleteCancel}">
+                <lightning:button label="Complete and Cancel" title="Complete and Cancel" onclick="{! c.handleCompleteCancel }"/>
+                <aura:set attribute="else">
+                    <lightning:button label="Complete" title="Complete" onclick="{! c.handleComplete }"/>
+                </aura:set>
+            </aura:if>
+            
+            <aura:if isTrue="{! v.showCompleteCancel}">
+                <c:childInvokedFromAura showCancelModal="{! v.showCancelConfirmModal }" onvaluechange="{!c.getValueFromLwc}"></c:childInvokedFromAura>                        
+            </aura:if>
+    </div>
+</aura:component>

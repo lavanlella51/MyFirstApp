@@ -1,0 +1,42 @@
+<template>
+
+    <lightning-combobox
+        name="reason"
+        label="Cancellation Reason"
+        placeholder="Select Cancellation Reason"
+        options={options}
+        value={value}
+        onchange={handleChange}>
+    </lightning-combobox>
+
+    <div if:true={showCancelModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close modalClose" title="Close" onclick={handleClose}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" title="close">
+                        </lightning-icon>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+                        Cancellation Confirmation
+                    </h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="min-height: 250px;">
+                    
+                    Hello.......
+                    
+                </div>
+                <footer class="slds-modal__footer slds-modal__footer_directional slds-grid slds-grid_align-spread">
+                    <button class="slds-button slds-button_neutral skipBtn" onclick={handleClose}>
+                        Cancel
+                    </button>
+                    <button class="slds-button slds-button_brand" onclick={handleNext}>
+                        Continue
+                    </button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+</template>

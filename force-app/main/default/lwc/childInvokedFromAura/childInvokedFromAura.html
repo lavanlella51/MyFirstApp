@@ -1,42 +1,330 @@
 <template>
-
-    <lightning-combobox
-        name="reason"
-        label="Cancellation Reason"
-        placeholder="Select Cancellation Reason"
-        options={options}
-        value={value}
-        onchange={handleChange}>
-    </lightning-combobox>
-
-    <div if:true={showCancelModal}>
-        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
-            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
-            <div class="slds-modal__container">
-                <header class="slds-modal__header">
-                    <button class="slds-button slds-button_icon slds-modal__close modalClose" title="Close" onclick={handleClose}>
-                        <lightning-icon icon-name="utility:close" alternative-text="close" title="close">
-                        </lightning-icon>
-                    </button>
-                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
-                        Cancellation Confirmation
-                    </h2>
+    <div class="color_white slds-p-around_small">
+        <article class="slds-card">
+            <div class="slds-card__header slds-grid slds-p-bottom_small" style="background:rgb(229 229 229);">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-account" title="account">
+                            <lightning-icon icon-name="standard:account"></lightning-icon>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title">
+                            <p class="slds-card__header-link slds-truncate">
+                                <span>Rewarding Healthy Behaviour</span>
+                            </p>
+                        </h2>
+                    </div>
+                    <div class="slds-no-flex">
+                        <lightning-button-icon  icon-name="utility:sync" variant="border-filled" alternative-text="" slot="actions">
+                        </lightning-button-icon>
+                    </div>
                 </header>
-                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="min-height: 250px;">
-                    
-                    Hello.......
-                    
-                </div>
-                <footer class="slds-modal__footer slds-modal__footer_directional slds-grid slds-grid_align-spread">
-                    <button class="slds-button slds-button_neutral skipBtn" onclick={handleClose}>
-                        Cancel
-                    </button>
-                    <button class="slds-button slds-button_brand" onclick={handleNext}>
-                        Continue
-                    </button>
-                </footer>
             </div>
-        </section>
-        <div class="slds-backdrop slds-backdrop_open"></div>
+            <div class="slds-card__body slds-card__body_inner">
+                <div class="slds-grid slds-size_12-of-12">
+                    <div class="slds-grid slds-wrap slds-size_2-of-12 slds-p-around_small">
+                        <div class="slds-size_12-of-12">
+                            <label class="label_element">
+                            RHB Enrolled
+                            </label>
+                        </div>
+                        <div class="slds-size_12-of-12 slds-text-title_bold data">
+                            Yes
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-wrap slds-size_2-of-12 slds-p-around_small">
+                        <div class="slds-size_12-of-12">
+                            <label class="label_element">
+                            RHB Eligible
+                            </label>
+                        </div>
+                        <div class="slds-size_12-of-12 slds-text-title_bold data">
+                            Yes
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-wrap slds-size_2-of-12 slds-p-around_small">
+                        <div class="slds-size_12-of-12">
+                            <label class="label_element">
+                            RHB Enrolled Date
+                            </label>
+                        </div>
+                        <div class="slds-size_12-of-12 slds-text-title_bold data">
+                            April 03, 2021
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-wrap slds-size_2-of-12 slds-p-around_small">
+                        <div class="slds-size_12-of-12">
+                            <label class="label_element">
+                            Current Active Device
+                            </label>
+                        </div>
+                        <div class="slds-size_12-of-12 slds-text-title_bold data">
+                            Apple Watch
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-wrap slds-size_2-of-12 slds-p-around_small">
+                        <div class="slds-size_12-of-12">
+                            <label class="label_element">
+                            Current Active Device Enrolled Date
+                            </label>
+                        </div>
+                        <div class="slds-size_12-of-12 slds-text-title_bold data">
+                            October 03, 2022
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-wrap slds-size_2-of-12 slds-p-around_small color_blue">
+                        <div class="slds-size_12-of-12">
+                            <label class="label_element">
+                            Total Rewards Earned
+                            </label>
+                        </div>
+                        <div class="slds-size_12-of-12 slds-text-title_bold data">
+                            $ 1.00
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <div class="slds-size_12-of-12 slds-m-top_large">
+            <lightning-tabset>
+                <lightning-tab label="Activity Tracker">
+                    <article class="slds-card">
+                        <div class="slds-card__header slds-grid slds-p-bottom_small" style="background:rgb(229 229 229);">
+                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                <div class="slds-media__figure">
+                                    <span class="slds-icon_container slds-icon-standard-account" title="account">
+                                        <lightning-icon icon-name="standard:account"></lightning-icon>
+                                    </span>
+                                </div>
+                                <div class="slds-media__body">
+                                    <h2 class="slds-card__header-title">
+                                        <p class="slds-card__header-link slds-truncate">
+                                            <span>Activity Tracker</span>
+                                        </p>
+                                    </h2>
+                                </div>
+                                <div class="slds-no-flex">
+                                    <div class="slds-grid">
+                                        <lightning-button-icon class="slds-m-right_x-small" icon-name="utility:clock" variant="bare" alternative-text="" slot="actions">
+                                        </lightning-button-icon>
+                                        <span class="slds-text-title_bold">Last Updated Date: 09/02/2022 10:30 AM</span>
+                                    </div>
+                                </div>
+                            </header>
+                        </div>
+                        <div class="slds-card__body slds-card__body_inner" style="overflow:auto"> 
+                            <table class="slds-table slds-table_bordered" aria-label="Activity Tracker" title="Activity Tracker">
+                                <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="" scope="col">
+                                            <div title="Name/Id">Name/Id</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div title="Active"></div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div title="Descriptions">Descriptions</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div title="Target">Target</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div title="Issue Rewards">Issue Rewards</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div title="Event">Event</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div title="Type">Type</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div title="Start Date">Start Date</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div title="End Date">End Date</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div title="Completed">Completed</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div title="% Completed">% Completed</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div title="% Remaining">% Remaining</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="slds-hint-parent">
+                                        <th data-label="Name/Id" scope="row">
+                                            <div title="Steps Challenge (45)">Steps Challenge (45)</div>
+                                        </th>
+                                        <th data-label="Active" scope="row">
+                                            <div title="Active" class="slds-text-color_success"><b>Active</b></div>
+                                        </th>
+                                        <td data-label="Descriptions">
+                                            <div title="Completed 37000 steps in a week to get 1$ reward.">Completed 37000 steps in a week to get 1$ reward.</div>
+                                        </td>
+                                        <td data-label="Target">
+                                            <div title="37000">37000</div>
+                                        </td>
+                                        <td data-label="Issue Rewards">
+                                            <div title="$1">$1</div>
+                                        </td>
+                                        <td data-label="Event">
+                                            <div title="Steps">Steps</div>
+                                        </td>
+                                        <td data-label="Type">
+                                            <div title="Apple Watch">Apple Watch</div>
+                                        </td>
+                                        <td data-label="Start Date">
+                                            <div title="Oct 03, 2022">Oct 03, 2022</div>
+                                        </td>
+                                        <td data-label="End Date">
+                                            <div title="Oct 08, 2022">Oct 08, 2022</div>
+                                        </td>
+                                        <td data-label="Completed">
+                                            <div title="37000">37000</div>
+                                        </td>
+                                        <td data-label="% Completed">
+                                            <div title="100%">100%</div>
+                                        </td>
+                                        <td data-label="% Remaining">
+                                            <div title="0%">0%</div>
+                                        </td>
+                                    </tr>
+                                    <tr class="slds-hint-parent">
+                                        <th data-label="Name/Id" scope="row">
+                                            <div title="Steps Challenge (45)">Steps Challenge (45)</div>
+                                        </th>
+                                        <th data-label="Active" scope="row">
+                                            <div title="Active" class="slds-text-color_success"><b></b></div>
+                                        </th>
+                                        <td data-label="Descriptions">
+                                            <div title="Completed 27000 steps in a week to get 1$ reward.">Completed 27000 steps in a week to get 1$ reward.</div>
+                                        </td>
+                                        <td data-label="Target">
+                                            <div title="27000">27000</div>
+                                        </td>
+                                        <td data-label="Issue Rewards">
+                                            <div title="$0">$0</div>
+                                        </td>
+                                        <td data-label="Event">
+                                            <div title="Steps">Steps</div>
+                                        </td>
+                                        <td data-label="Type">
+                                            <div title="Fit Bit">Fit Bit</div>
+                                        </td>
+                                        <td data-label="Start Date">
+                                            <div title="Oct 03, 2022">Oct 10, 2022</div>
+                                        </td>
+                                        <td data-label="End Date">
+                                            <div title="Oct 08, 2022">Oct 15, 2022</div>
+                                        </td>
+                                        <td data-label="Completed">
+                                            <div title="37000">0</div>
+                                        </td>
+                                        <td data-label="% Completed">
+                                            <div title="0%">0%</div>
+                                        </td>
+                                        <td data-label="% Remaining">
+                                            <div title="100%">100%</div>
+                                        </td>
+                                    </tr>                                    
+                                </tbody>
+                            </table>                       
+                        </div>
+                    </article>    
+                </lightning-tab>
+                <lightning-tab label="Device List">
+                    <article class="slds-card">
+                        <div class="slds-card__header slds-grid slds-p-bottom_small" style="background:rgb(229 229 229);">
+                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                <div class="slds-media__figure">
+                                    <span class="slds-icon_container slds-icon-standard-account" title="account">
+                                        <lightning-icon icon-name="standard:account"></lightning-icon>
+                                    </span>
+                                </div>
+                                <div class="slds-media__body">
+                                    <h2 class="slds-card__header-title">
+                                        <p class="slds-card__header-link slds-truncate">
+                                            <span>Device List</span>
+                                        </p>
+                                    </h2>
+                                </div>
+                                <div class="slds-no-flex">
+                                    <div class="slds-grid">
+                                        <lightning-button-icon class="slds-m-right_x-small" icon-name="utility:clock" variant="bare" alternative-text="" slot="actions">
+                                        </lightning-button-icon>
+                                        <span class="slds-text-title_bold">Last Updated Date: 09/02/2022 10:30 AM</span>
+                                    </div>
+                                </div>
+                            </header>
+                        </div>
+                        <div class="slds-card__body slds-card__body_inner" style="overflow:auto"> 
+                            <table class="slds-table slds-table_bordered" aria-label="Device List" title="Device List">
+                                <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="" scope="col" width="10%">
+                                            <div title="Device Name/Type">Device Name/Type</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div title="Active"></div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div title="Last Sync Date">Last Sync Date</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div title="Enrolled Date">Enrolled Date</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div title="Unenrolled Date">Unenrolled Date</div>
+                                        </th>                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="slds-hint-parent">
+                                        <th data-label="Device Name/Type" scope="row">
+                                            <div title="Apple Watch">Apple Watch</div>
+                                        </th>
+                                        <th data-label="Active" scope="row">
+                                            <div title="Active" class="slds-text-color_success"><b>Active</b></div>
+                                        </th>
+                                        <td data-label="Last Sync Date">
+                                            <div title="Oct 03, 2022 10:30 AM">Oct 03, 2022 10:30 AM</div>
+                                        </td>
+                                        <td data-label="Enrolled Date">
+                                            <div title="Oct 01, 2022">Oct 01, 2022</div>
+                                        </td>
+                                        <td data-label="Unenrolled Date">
+                                            <div title=""></div>
+                                        </td>                                        
+                                    </tr>
+                                    <tr class="slds-hint-parent">
+                                        <th data-label="Device Name/Type" scope="row">
+                                            <div title="Fit Bit Watch">Fit Bit Watch</div>
+                                        </th>
+                                        <th data-label="Active" scope="row">
+                                            <div title="Active" class="slds-text-color_success"><b></b></div>
+                                        </th>
+                                        <td data-label="Last Sync Date">
+                                            <div title="Sep 05, 2022 10:30 AM">Sep 05, 2022 10:30 AM</div>
+                                        </td>
+                                        <td data-label="Enrolled Date">
+                                            <div title="Sep 05, 2022">Sep 05, 2022</div>
+                                        </td>
+                                        <td data-label="Unenrolled Date">
+                                            <div title="Sep 15, 2022">Sep 15, 2022</div>
+                                        </td>                                        
+                                    </tr>                                                                       
+                                </tbody>
+                            </table>                       
+                        </div>
+                    </article>        
+                </lightning-tab>            
+            </lightning-tabset>
+        </div>
     </div>
 </template>

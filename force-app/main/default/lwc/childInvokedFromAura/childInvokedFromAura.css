@@ -1,0 +1,23 @@
+.label_element {
+    font-size: 12px;
+}
+
+.data {
+    font-size: 12px;
+}
+
+.color_blue{
+    color: #1e90ff;
+}
+
+.color_white{
+    background-color: white;
+}
+
+.slds-table thead th {
+    background-color:none;
+    color: #444;
+    padding: 0.25rem 0.5rem;
+    font-weight: 700;
+    line-height: normal;
+}

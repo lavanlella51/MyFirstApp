@@ -1,0 +1,169 @@
+<template>
+    <div class="slds-size_12-of-12 slds-p-around_large slds-grid slds-wrap" style="background-color:white">
+        <div class="slds-size_12-of-12 slds-grid slds-wrap" style="border-bottom: 1px solid rgb(242, 242, 242);">
+            <div class="slds-size_4-of-12 slds-p-bottom_small">
+                <div class="slds-size_12-of-12 text-bold">
+                    Subscriptions Type
+                </div>
+                <div class="slds-size_12-of-12">
+                    Monthly
+                </div>
+            </div>
+            <div class="slds-size_4-of-12 slds-p-bottom_small">
+                <div class="slds-size_12-of-12 text-bold">
+                    Plan
+                </div>
+                <div class="slds-size_12-of-12">
+                    $ 5.00
+                </div>
+            </div>
+            <div class="slds-size_4-of-12 slds-p-bottom_small">
+                <div class="slds-size_12-of-12 text-bold">
+                    Next Billing Date of Subscriptions
+                </div>
+                <div class="slds-size_12-of-12">
+                    12/10/2022
+                </div>
+            </div>
+        </div>
+        <div class="slds-size_12-of-12 slds-grid slds-wrap slds-m-top_small" style="border-bottom: 1px solid rgb(242, 242, 242);">
+            <div class="slds-size_12-of-12 slds-grid slds-wrap">
+                <div class="slds-size_9-of-12 text-bold">
+                    Select the Card
+                </div>
+                <div class="slds-size_3-of-12" style="text-align:right;">
+                    <lightning-combobox
+                        name="addcard"
+                        label="Add Card"
+                        variant="label-hidden"
+                        placeholder="Add credit card"
+                        slot="actions">
+                    </lightning-combobox>
+                </div>
+                <div class="slds-size_12-of-12 slds-p-top_small slds-p-bottom_small">
+                    <table class="slds-table slds-table_cell-buffer" title="Available Cards" aria-labelledby="element-with-table-label" >
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title=""></div>
+                                </th>                                
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Card Holder Name">Card Holder Name</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Last Four Digit of Card">Last Four Digit of Card</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Expiry Date">Expiry Date</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Zip Code">Zip Code</div>
+                                </th>
+                                <th class="" scope="col">
+                                    <div class="slds-truncate" title="Status">Status</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="slds-hint-parent">
+                                <td width="3%">
+                                    <input name="row_select" type="radio"/>
+                                </td> 
+                                <td data-label="Card Holder Name">
+                                    <div class="slds-truncate" title="Scott Farmer">Scott Farmer</div>
+                                </td>
+                                <td data-label="Last Four Digit of Card">
+                                    <div class="slds-truncate" title="0860">0860</div>
+                                </td>
+                                <td data-label="Expiry Date">
+                                    <div class="slds-truncate" title="11/22">11/22</div>
+                                </td>
+                                <td data-label="Zip Code">
+                                    <div class="slds-truncate" title="07109">07109</div>
+                                </td>
+                                <td data-label="Status">
+                                    <div class="slds-truncate slds-text-color_error" title="Expired">Expired</div>
+                                </td>            
+                            </tr>
+                            <tr class="slds-hint-parent">
+                                <td width="3%">
+                                    <input name="row_select" type="radio" checked/>
+                                </td>                                 
+                                <td data-label="Card Holder Name">
+                                    <div class="slds-truncate" title="XXXXXXXX1234">XXXXXXXX1234</div>
+                                </td>
+                                <td data-label="Last Four Digit of Card">
+                                    <div class="slds-truncate" title="1428">1428</div>
+                                </td>
+                                <td data-label="Expiry Date">
+                                    <div class="slds-truncate" title="07/24">07/24</div>
+                                </td>
+                                <td data-label="Zip Code">
+                                    <div class="slds-truncate" title="07109">07109</div>
+                                </td>
+                                <td data-label="Status">
+                                    <div class="slds-truncate" title=""></div>
+                                </td>            
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>            
+        </div>
+        <div class="slds-size_12-of-12 slds-m-top_small slds-p-left_medium slds-p-right_medium" title="Section Title">
+            <div class="slds-size_12-of-12 slds-grid slds-p-top_x-small slds-p-bottom_x-small" style="border: 1px solid rgb(242, 242, 242);">
+                <span class="slds-m-left_x-small">
+                    <input name="membership" type="radio" checked/>
+                </span>
+                <span class="text-bold slds-m-left_small">
+                    Annual Membership Plan - Upgrade (Option)
+                </span>
+            </div>
+            <div class="slds-size_12-of-12 slds-grid slds-wrap lgc-bg">
+                <div class="slds-size_4-of-12 slds-p-around_small">
+                    <div class="slds-size_12-of-12 text-bold">
+                        Yearly Cost
+                    </div>
+                    <div class="slds-size_12-of-12">
+                        $ 48
+                    </div>
+                </div>
+                <div class="slds-size_4-of-12 slds-p-around_small">
+                    <div class="slds-size_12-of-12 text-bold">
+                        Tax Amount
+                    </div>
+                    <div class="slds-size_12-of-12">
+                        $ 2.50
+                    </div>
+                </div>
+                <div class="slds-size_4-of-12 slds-p-around_small">
+                    <div class="slds-size_12-of-12 text-bold">
+                        Next Billing Amount for Annual Membership
+                    </div>
+                    <div class="slds-size_12-of-12">
+                        $ 51.50
+                    </div>
+                </div>
+            </div>
+            <div class="slds-size_12-of-12 lgc-bg slds-m-top_small">            
+                <div class="slds-size_12-of-12 slds-p-around_small">
+                    <div class="slds-text-heading_medium">Switch Membership Plan</div>
+                    <div class="text-bold slds-m-top_small">
+                        CarePass membership plan (Follow Instructions and read the terms to customer)
+                    </div>
+                    <div>
+                        <p>
+                            You will be charged a non-refundable
+                        </p>
+                    </div>
+                    <div class="text-bold slds-m-top_small">
+                        Annualy: $48/Year plus applicable taxes
+                    </div>
+                    <div class="text-bold">
+                        Monthly: $5/Month
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
